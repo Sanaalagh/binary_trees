@@ -2,31 +2,33 @@
 #include <stdlib.h>
 #include "binary_trees.h"
 
-/* Function to print binary tree in 2D */
-void print2DUtil(binary_tree_t *root, int space) {
-    // Base case
-    if (root == NULL)
-        return;
+/**
+ * print2DUtil - Function to print binary tree in 2D
+ * @root: Pointer to the root node of the tree to print
+ * @space: Initial space for the root
+ */
+void print2DUtil(binary_tree_t *root, int space)
+{
+	if (root == NULL)
+		return;
 
-    // Increase distance between levels
-    space += 10;
+	space += 10;
 
-    // Process right child first
-    print2DUtil(root->right, space);
+	print2DUtil(root->right, space);
 
-    // Print current node after space
-    // count
-    printf("\n");
-    for (int i = 10; i < space; i++)
-        printf(" ");
-    printf("%d\n", root->n);
+	printf("\n");
+	for (int i = 10; i < space; i++)
+		printf(" ");
+	printf("%d\n", root->n);
 
-    // Process left child
-    print2DUtil(root->left, space);
+	print2DUtil(root->left, space);
 }
 
-// Wrapper over print2DUtil()
-void binary_tree_print(const binary_tree_t *root) {
-    // Cast away const qualifier
-    print2DUtil((binary_tree_t *)root, 0);
+/**
+ * binary_tree_print - Wrapper over print2DUtil()
+ * @tree: Pointer to the root node of the tree to print
+ */
+void binary_tree_print(const binary_tree_t *tree)
+{
+	print2DUtil((binary_tree_t *)tree, 0);
 }
