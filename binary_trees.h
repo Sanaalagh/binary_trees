@@ -18,6 +18,7 @@ typedef struct binary_tree_s avl_t;
 typedef struct binary_tree_s heap_t;
 
 /* Function Prototypes */
+size_t binary_tree_size(const binary_tree_t *tree);
 
 /* Basic operations */
 void binary_tree_print(const binary_tree_t *);
