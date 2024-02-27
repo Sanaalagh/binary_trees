@@ -68,5 +68,15 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first, const binary_tr
 
 int binary_tree_is_complete(const binary_tree_t *tree);
 binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree);
+binary_tree_t *binary_tree_rotate_right(binary_tree_t *tree);
+
+int binary_tree_is_bst(const binary_tree_t *tree);
+
+bst_t *bst_insert(bst_t **tree, int value);
+
+bst_t *array_to_bst(int *array, size_t size);
+
+/* Function to print binary tree (provided) */
+void binary_tree_print(const binary_tree_t *);
 
 #endif /* BINARY_TREES_H */
