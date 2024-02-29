@@ -8,26 +8,29 @@
  * Return: pointer to the lowest common ancestor node of the two given nodes,
  *         or NULL if no common ancestor was found
  */
-binary_tree_t *binary_trees_ancestor(
-		const binary_tree_t *first, const binary_tree_t *second)
+binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
+				     const binary_tree_t *second)
 {
-	const binary_tree_t *current, *ancestor;
+	binary_tree_t *p, *q;
 
-	if (!first || !second)
-		return (NULL);
-
-	if (first == second)
-		return ((binary_tree_t *)first);
-
-	/* Traverse up the tree from the first node looking for second */
-	for (current = first; current != NULL; current = current->parent)
+	if (first == NULL || second == NULL)
 	{
-		for (ancestor = second; ancestor != NULL; ancestor = ancestor->parent)
-		{
-			if (current == ancestor)
-				return ((binary_tree_t *)current);
-		}
+		return (NULL);
+	}
+	if (first == second)
+	{
+		return ((binary_tree_t *)first);
 	}
 
-	return (NULL);
+	p = first->parent;
+	q = second->parent;
+	if (p == NULL || first == q || (!p->parent && q))
+	{
+		return (binary_trees_ancestor(first, q));
+	}
+	else if (q == NULL || p == second || (!q->parent && p))
+	{
+		return (binary_trees_ancestor(p, second));
+	}
+	return (binary_trees_ancestor(p, q));
 }
