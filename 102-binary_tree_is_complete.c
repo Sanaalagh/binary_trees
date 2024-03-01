@@ -45,5 +45,6 @@ int is_complete(const binary_tree_t *tree, int index, int number_nodes)
 		return (1);
 	if (index >= number_nodes)
 		return (0);
-	return (is_complete(tree->left, 2 * index + 1, number
+	return (is_complete(tree->left, 2 * index + 1, number_nodes) &&
+		is_complete(tree->right, 2 * index + 2, number_nodes));
 }
